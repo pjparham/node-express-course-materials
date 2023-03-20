@@ -18,3 +18,7 @@ const _ = require('lodash');
 const items = [1, [2, [3, [4]]]]
 const flatItems = _.flattenDeep(items)
 console.log(flatItems)
+console.log('Hello people')
+
+// to install dev dependencies 
+// npm i <packageName> -D OR --save-dev
