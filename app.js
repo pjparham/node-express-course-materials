@@ -1,24 +1,40 @@
-// npm - global command, comes with node 
-// npm --version
+const { readFile } = require('fs')
 
-// local dependency - use it only in this particular project *used more often
-// npm i <packageName>
+const getText = (path) => {
+    return new Promise((resolve, reject) => {
+        readFile(path, 'utf-8', (err, data)=>{
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(data)
+            }
+        })
+    })
+}
 
-// global dependency - use it in any project
-// npm install -g <packageName>
-// sudo npm install -g <packageName> (mac)
+const start = async () =>{
+    try {
+        const first = await getText('./content/first.txt');
+    } catch (error) {
+        console.log(error)
+    }
 
-//package.json - manifest file(stores important info about project/package)
-// manual approach (create package.json in the root, create properties etc)
-// npm init (step by step, press enter to skip)
-// npm init -y (everything default)
 
-const _ = require('lodash');
+}
+// getText('./content/first.txt')
+//     .then(result => console.log(result))
+//     .catch(err => console.log(err))
+start()
 
-const items = [1, [2, [3, [4]]]]
-const flatItems = _.flattenDeep(items)
-console.log(flatItems)
-console.log('Hello people')
 
-// to install dev dependencies 
-// npm i <packageName> -D OR --save-dev
+// console.log('started a first task')
+// readFile('./content/first.txt', 'utf-8', (err, result) => {
+//     if (err){
+//          console.log(err)
+//          return
+//     }
+//     console.log(result)
+//     console.log('completed first task')
+// })
+// console.log('starting next task')
